@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navbestiary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/alchemy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/wtchrLogoMainPage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_witcher_3_logo" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_alchemy"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/nav_icn_bestiary"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="@+id/wtchrLogoMainPage"
+        app:layout_constraintStart_toStartOf="@+id/wtchrLogoMainPage"
+        app:layout_constraintTop_toBottomOf="@+id/wtchrLogoMainPage" />
+
+
+    <TextView
+        android:id="@+id/txtv_alchemy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Alchemy"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/btn_alchemy"
+        app:layout_constraintStart_toStartOf="@+id/btn_alchemy"
+        app:layout_constraintTop_toBottomOf="@+id/btn_alchemy" />
+
+
+    <TextView
+        android:id="@+id/txtv_alchemy_subtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bombs,Oil,Options"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtv_alchemy"
+        app:layout_constraintStart_toStartOf="@+id/txtv_alchemy"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_alchemy" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_nav_alchemy_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_goto_bestiary"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/chevron_left" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_bestiary_alchemy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+
+                android:id="@+id/rb_alchemy_alchemy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

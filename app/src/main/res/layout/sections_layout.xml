@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sectionConstraintLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/sectionimageView"
+        android:layout_width="140dp"
+        android:layout_height="210dp"
+        android:padding="5dp"
+        android:src="@drawable/bestiary_cards_hybrids"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sectionTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/dinpro_bold"
+        android:text="Beasts"
+        android:textColor="#BEFF9800"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/sectionSubtitleView"
+        app:layout_constraintEnd_toEndOf="@id/sectionimageView"
+        app:layout_constraintStart_toStartOf="@id/sectionimageView" />
+
+    <TextView
+        android:id="@+id/sectionSubtitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beasts"
+        android:textSize="10sp"
+        android:fontFamily="@font/ctr_kur_start"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
