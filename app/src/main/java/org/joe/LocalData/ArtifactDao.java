@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import org.joe.Data.Artifact;
+import org.joe.Data.Ingredient;
 
 import java.util.List;
 
@@ -27,4 +28,7 @@ public interface ArtifactDao {
 
     @Update
     public void updateArtifact(Artifact artifact);
+
+    @Query("SELECT * FROM INGREDIENT")
+    public LiveData<List<Ingredient>> getAllIngredients();
 }

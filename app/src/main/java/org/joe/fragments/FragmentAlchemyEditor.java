@@ -12,9 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.joe.AlchemyViewModel;
 import org.joe.Data.Artifact;
+import org.joe.adapters.IngredientAdaptor;
 import org.joe.databinding.FragmentAlchemyEditorBinding;
 
 public class FragmentAlchemyEditor extends Fragment {
@@ -22,7 +24,7 @@ public class FragmentAlchemyEditor extends Fragment {
     private FragmentAlchemyEditorBinding binding;
     private AlchemyViewModel alchemyViewModel;
     private  Artifact artifact;
-
+    private IngredientAdaptor ingredientAdaptor;
 
     public static FragmentAlchemyEditor newInstance(Artifact artifact) {
         FragmentAlchemyEditor fragment = new FragmentAlchemyEditor();
@@ -66,6 +68,14 @@ public class FragmentAlchemyEditor extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setUpArtifactFromBd();
+
+        alchemyViewModel.getAllIngredients().observe(getViewLifecycleOwner(), ingredients -> {
+            if(ingredientAdaptor==null){
+                ingredientAdaptor = new IngredientAdaptor(ingredients);
+                binding.allIngredientsRecycler.setAdapter(ingredientAdaptor);
+                binding.allIngredientsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            }
+        });
     }
 
     private void setUpArtifactFromBd() {

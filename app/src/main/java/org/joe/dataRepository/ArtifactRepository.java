@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.joe.Data.Artifact;
+import org.joe.Data.Ingredient;
 import org.joe.LocalData.ArtifactDao;
 
 import java.util.List;
@@ -38,4 +39,9 @@ public class ArtifactRepository {
     public void updateArtifact(Artifact artifact) {
         artifactDao.updateArtifact(artifact);
     }
+
+    public LiveData<List<Ingredient>> getAllIngredients() {
+        return artifactDao.getAllIngredients();
+    }
+
 }

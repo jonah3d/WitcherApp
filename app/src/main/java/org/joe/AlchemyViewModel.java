@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.joe.Data.Artifact;
+import org.joe.Data.Ingredient;
 import org.joe.LocalData.ArtifactDatabase;
 import org.joe.dataRepository.ArtifactRepository;
 
@@ -29,6 +30,10 @@ public class AlchemyViewModel extends AndroidViewModel {
 
     public LiveData<List<Artifact>> getArtifacts() {
         return artifacts;
+    }
+
+    public LiveData<List<Ingredient>> getAllIngredients() {
+        return artifactRepository.getAllIngredients();
     }
 
     public void updateArtifact(Artifact artifact) {
