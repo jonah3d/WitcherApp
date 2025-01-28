@@ -101,7 +101,18 @@ public class FragmentAlchemyEditor extends Fragment {
             }
         });
 
-
+        binding.btRemoveIngredient.setOnClickListener(v -> {
+            if(ingredientAdaptor.getSelectedPosition() != RecyclerView.NO_POSITION){
+                Recipe recipe = new Recipe(
+                        artifact.getId(),
+                        ingredientAdaptor.getSelectedIngredient().getId(),
+                        1
+                );
+                alchemyViewModel.removeIngredientFromRecipe(recipe);
+            } else {
+                Toast.makeText(getContext(), "Please select an ingredient to remove", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     void onIngredientSelected(Ingredient ingredient) {

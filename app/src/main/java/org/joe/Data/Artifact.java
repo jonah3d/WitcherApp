@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Entity(tableName = "artifact",
         indices = {
-                @Index(value = {"key"}, unique = true)  // matches your schema's unique index
+                @Index(value = {"key"}, unique = true)
         })
 public class Artifact implements Serializable {
     @PrimaryKey

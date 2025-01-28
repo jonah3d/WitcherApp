@@ -69,9 +69,9 @@ public class AlchemyViewModel extends AndroidViewModel {
             );
 
             if (existingRecipe != null) {
-                // Use the existing recipe's ID and update its quantity
+
                 existingRecipe.setQuantity(existingRecipe.getQuantity() + recipe.getQuantity());
-                artifactRepository.updateRecipe(existingRecipe);  // Use update instead of insert
+                artifactRepository.updateRecipe(existingRecipe);
             } else {
                 artifactRepository.addIngredientToRecipe(recipe);
             }
@@ -87,10 +87,10 @@ public class AlchemyViewModel extends AndroidViewModel {
             if (existingRecipe != null) {
                 int newQuantity = existingRecipe.getQuantity() - 1;
                 if (newQuantity <= 0) {
-                    // Delete the recipe if quantity reaches 0
+
                     artifactRepository.deleteRecipe(existingRecipe);
                 } else {
-                    // Update with reduced quantity
+
                     existingRecipe.setQuantity(newQuantity);
                     artifactRepository.updateRecipe(existingRecipe);
                 }
@@ -100,8 +100,4 @@ public class AlchemyViewModel extends AndroidViewModel {
 
 
 
-//    public void addIngredientToRecipe(Recipe ingredientWithQuantity) {
-//        ExecutorService executor = Executors.newSingleThreadExecutor();
-//        executor.execute(() -> artifactRepository.addIngredientToRecipe(ingredientWithQuantity));
-//    }
 }

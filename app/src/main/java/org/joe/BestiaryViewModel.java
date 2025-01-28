@@ -26,7 +26,7 @@ public class BestiaryViewModel extends AndroidViewModel {
     private MutableLiveData<List<Section>> sections = new MutableLiveData<>();
     private ApiService service;
     private MutableLiveData<List<Entry>> entries = new MutableLiveData<>();
-    private String currentSection; // Add this to track current section
+    private String currentSection;
 
     public MutableLiveData<List<Entry>> getEntries() {
         return entries;
@@ -34,7 +34,7 @@ public class BestiaryViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<Section>> getSections() {
         if (sections.getValue() == null) {
-            downloadSections(); // Retry if sections are null
+            downloadSections();
         }
         return sections;
     }
@@ -68,7 +68,7 @@ public class BestiaryViewModel extends AndroidViewModel {
     }
 
     public void LoadEntries(String sectionFileName) {
-        currentSection = sectionFileName; // Store current section
+        currentSection = sectionFileName;
         String formattedName = sectionFileName.replace(" ", "_").toLowerCase();
 
         service.getEntries(formattedName).enqueue(new Callback<SectionResponse>() {
