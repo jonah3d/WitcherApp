@@ -13,10 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.joe.AlchemyViewModel;
 import org.joe.Data.Artifact;
+import org.joe.Data.Ingredient;
+import org.joe.Data.IngredientWithQuantity;
+import org.joe.Data.Recipe;
 import org.joe.adapters.IngredientAdaptor;
+import org.joe.adapters.IngredientQTAdapter;
 import org.joe.databinding.FragmentAlchemyEditorBinding;
 
 public class FragmentAlchemyEditor extends Fragment {
@@ -25,6 +30,7 @@ public class FragmentAlchemyEditor extends Fragment {
     private AlchemyViewModel alchemyViewModel;
     private  Artifact artifact;
     private IngredientAdaptor ingredientAdaptor;
+   private IngredientQTAdapter ingredientQTAdapter;
 
     public static FragmentAlchemyEditor newInstance(Artifact artifact) {
         FragmentAlchemyEditor fragment = new FragmentAlchemyEditor();
@@ -71,12 +77,39 @@ public class FragmentAlchemyEditor extends Fragment {
 
         alchemyViewModel.getAllIngredients().observe(getViewLifecycleOwner(), ingredients -> {
             if(ingredientAdaptor==null){
-                ingredientAdaptor = new IngredientAdaptor(ingredients);
+                ingredientAdaptor = new IngredientAdaptor(ingredients,this::onIngredientSelected);
                 binding.allIngredientsRecycler.setAdapter(ingredientAdaptor);
                 binding.allIngredientsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             }
         });
+
+
+        alchemyViewModel.getRecipe(artifact.getId()).observe(getViewLifecycleOwner(), ingredients -> {
+            if(ingredientQTAdapter == null){
+                ingredientQTAdapter = new IngredientQTAdapter(ingredients);
+                binding.recvieIngredients.setAdapter(ingredientQTAdapter);
+                binding.recvieIngredients.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+            } else {
+                ingredientQTAdapter.setIngredients(ingredients);
+            }
+        });
+
+        binding.btAddIngredient.setOnClickListener(v -> {
+            if(ingredientAdaptor.getSelectedPosition() != RecyclerView.NO_POSITION){
+                Recipe recipe = new Recipe(artifact.getId(), ingredientAdaptor.getSelectedIngredient().getId(), 1);
+                alchemyViewModel.addOrUpdateIngredientInRecipe(recipe);
+            }
+        });
+
+
     }
+
+    void onIngredientSelected(Ingredient ingredient) {
+
+    }
+
+
+
 
     private void setUpArtifactFromBd() {
 

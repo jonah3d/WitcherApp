@@ -35,6 +35,12 @@ public class Recipe {
     private String ingredient;
     private Integer quantity;
 
+    public Recipe(Integer artifact, String ingredient, Integer quantity) {
+
+        this.artifact = artifact;
+        this.ingredient = ingredient;
+        this.quantity = quantity;}
+
     // Getters and setters
     @NonNull
     public Integer getId() { return id; }

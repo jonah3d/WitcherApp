@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import org.joe.Data.Artifact;
 import org.joe.Data.Ingredient;
+import org.joe.Data.IngredientWithQuantity;
+import org.joe.Data.Recipe;
 import org.joe.LocalData.ArtifactDao;
 
 import java.util.List;
@@ -43,5 +45,21 @@ public class ArtifactRepository {
     public LiveData<List<Ingredient>> getAllIngredients() {
         return artifactDao.getAllIngredients();
     }
+    public LiveData<List<IngredientWithQuantity>> getRecipe(Integer artifactId) {
+        return artifactDao.getRecipe(artifactId);
+    }
 
+    public void addIngredientToRecipe(Recipe recipe) {
+        artifactDao.addIngredientToRecipe(recipe);
+    }
+    public void updateRecipe(Recipe recipe) {
+        artifactDao.updateRecipe(recipe);
+    }
+    public void deleteRecipe(Recipe recipe) {
+        artifactDao.deleteRecipe(recipe);
+    }
+
+    public Recipe getRecipeByArtifactAndIngredient(Integer artifactId, String ingredientId) {
+        return artifactDao.getRecipeByArtifactAndIngredient(artifactId, ingredientId);
+    }
 }
